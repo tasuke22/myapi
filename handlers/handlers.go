@@ -10,10 +10,12 @@ import (
 	"strconv"
 )
 
+// GET /hello のハンドラ
 func HelloHandler(w http.ResponseWriter, req *http.Request) {
-	io.WriteString(w, "Hello world!\n")
+	io.WriteString(w, "Hello, world!\n")
 }
 
+// POST /article のハンドラ
 func PostArticleHandler(w http.ResponseWriter, req *http.Request) {
 	var reqArticle models.Article
 	if err := json.NewDecoder(req.Body).Decode(&reqArticle); err != nil {
@@ -25,6 +27,7 @@ func PostArticleHandler(w http.ResponseWriter, req *http.Request) {
 	json.NewEncoder(w).Encode(article)
 }
 
+// GET /article/list のハンドラ
 func ArticleListHandler(w http.ResponseWriter, req *http.Request) {
 	queryMap := req.URL.Query()
 
@@ -49,17 +52,24 @@ func ArticleListHandler(w http.ResponseWriter, req *http.Request) {
 	json.NewEncoder(w).Encode(articleList)
 }
 
+// GET /article/{id} のハンドラ
 func ArticleDetailHandler(w http.ResponseWriter, req *http.Request) {
 	articleID, err := strconv.Atoi(mux.Vars(req)["id"])
 	if err != nil {
-		http.Error(w, "Invalid article ID", http.StatusBadRequest)
+		http.Error(w, "Invalid query parameter", http.StatusBadRequest)
 		return
 	}
+
+	// 暫定でこれを追加することで
+	// 「変数articleIDが使われていない」というコンパイルエラーを回避
 	log.Println(articleID)
+
 	article := models.Article1
+
 	json.NewEncoder(w).Encode(article)
 }
 
+// POST /article/nice のハンドラ
 func PostNiceHandler(w http.ResponseWriter, req *http.Request) {
 	var reqArticle models.Article
 	if err := json.NewDecoder(req.Body).Decode(&reqArticle); err != nil {
@@ -70,6 +80,7 @@ func PostNiceHandler(w http.ResponseWriter, req *http.Request) {
 	json.NewEncoder(w).Encode(article)
 }
 
+// POST /comment のハンドラ
 func PostCommentHandler(w http.ResponseWriter, req *http.Request) {
 	var reqComment models.Comment
 	if err := json.NewDecoder(req.Body).Decode(&reqComment); err != nil {

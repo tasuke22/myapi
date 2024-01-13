@@ -19,6 +19,7 @@ require (
 	github.com/go-delve/delve v1.22.0 // indirect
 	github.com/go-delve/gore v0.11.6 // indirect
 	github.com/go-delve/liner v1.2.3-0.20220127212407-d32d89dd2a5d // indirect
+	github.com/go-sql-driver/mysql v1.7.1 // indirect
 	github.com/gohugoio/hugo v0.121.2 // indirect
 	github.com/google/go-dap v0.11.0 // indirect
 	github.com/gorilla/mux v1.8.1 // indirect
