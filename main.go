@@ -1,11 +1,11 @@
 package main
 
 import (
-	_ "github.com/go-sql-driver/mysql"
-	"github.com/gorilla/mux"
 	"github.com/tasuke/myapi/handlers"
 	"log"
 	"net/http"
+
+	"github.com/gorilla/mux"
 )
 
 func main() {

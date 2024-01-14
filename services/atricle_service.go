@@ -55,7 +55,6 @@ func GetArticleService(articleID int) (models.Article, error) {
 	if err != nil {
 		return models.Article{}, err
 	}
-
 	article.CommentList = append(article.CommentList, commentList...)
 
 	return article, nil

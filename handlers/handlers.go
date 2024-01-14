@@ -2,12 +2,13 @@ package handlers
 
 import (
 	"encoding/json"
-	"github.com/gorilla/mux"
 	"github.com/tasuke/myapi/models"
 	"github.com/tasuke/myapi/services"
 	"io"
 	"net/http"
 	"strconv"
+
+	"github.com/gorilla/mux"
 )
 
 // GET /hello のハンドラ
